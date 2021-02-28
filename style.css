@@ -1,0 +1,65 @@
+:root {
+	--bgColour: 0;
+	--textColour: 0;
+	--imageInvert: 0;
+
+	--transitionTime: 0.25s;
+}
+
+*:not(a) {
+	color: var(--textColour);
+	font-family: "Inter", sans-serif;
+	
+	transition: color var(--transitionTime), background-color var(--transitionTime);
+}
+
+a {
+	font-family: "Inter", sans-serif;
+}
+
+body {
+	background-color: var(--bgColour);
+}
+
+img {
+	height: auto;
+	width: auto;
+
+	max-height: 50vh;
+	max-width: 95%;
+
+	filter: invert(var(--imageInvert));
+
+	transition: filter var(--transitionTime);
+}
+
+button {
+	border: 3px solid var(--textColour);
+	border-radius: 6px;
+	
+	padding: 5px;
+
+	background-color: #80808040;
+}
+
+button:hover {
+	background-color: #80808060;
+}
+
+
+#themeToggle {
+	border-radius: 6px 0px 0px 0px;
+	border-width: 3px 0px 0px 3px;
+	
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+
+#discord {
+	position: fixed;
+	bottom: 3px;
+	left: 3px;
+
+	background-color: inherit;
+}

@@ -1,0 +1,63 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta property="og:title" content="amognus us notation">
+		<meta property="og:description" content="An ordinal notation.">
+
+		<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+		<link href="../style.css" rel="stylesheet">
+
+		<script src="../theme.js"></script>
+		<script src="../main.js" defer></script>
+
+		<title>amognus us notation</title>
+	</head>
+
+	<body>
+		<h1>Expansion</h1>
+		The value of the sequence 1 is 1.<br>
+		First, to expand a sequence S in amognus us notation, split it into parts, before elements whose value is equal to their position. 
+		Then, for each sub-sequence, reduce the first element until it is 1. 
+		Reduce the rest of the elements in the sub-sequence by the same amount you reduced the first element by.<br><br>
+
+		<img src="images/ex1.png" alt="Image of an example of the first step of expansion"><br>
+
+		If there's multiple sub-sequences, the value of S is equal to the sum of the values of the subsequences.
+		However, this isn't enough for sequences with only a single sub-sequence.
+		In that case, do this:
+
+		<ul>
+			<li>
+				Remove the last element, add 1, and call that F.
+			</li>
+			<li>
+				Group the sequence into "blocks", which are sequences of the same number.
+			</li>
+		</ul>
+
+		Next, scan right to left by block. 
+		Do this until the amount of numbers "scanned" &GreaterEqual; F - what number the current block is made of.
+		Once you stop, take all of the scanned blocks, and call them &Delta;S. Let &Delta; be F - what number the leftmost block is made of.<br><br>
+
+		<img src="images/ex2.png" alt="Image of finding Delta and Delta S"><br>
+
+		With &Delta; and &Delta;S, we can define the FS of the sequence. 
+		S[1] = &Delta;S. S[n+1] = S[n] concatenated to &Delta;S with each element increased by &Delta; * S. 
+		And the value of S is sup{S[n] | n &lt; &omega;}.<br><br>
+
+		<img src="images/ex3.png" alt="Image of FS of the previous example"><br>
+
+		<h1>Analysis</h1>
+		fuck you no im way too lazy<br>
+
+		<br><br><br><br> <!-- discord link space -->
+
+		<button id="themeToggle" onclick="toggleTheme()">
+			Toggle theme
+		</button>
+		<a id="discord">discord</a>
+	</body>
+</html>
