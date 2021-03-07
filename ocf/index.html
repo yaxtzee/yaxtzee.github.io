@@ -1,0 +1,100 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta property="og:title" content='"OCF"'>
+		<meta property="og:description" content="it isnt even an ocf why did i call it this">
+
+		<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+		<link href="../style.css" rel="stylesheet">
+
+		<script src="../theme.js"></script>
+		<script src="../main.js" defer></script>
+
+		<title>"OCF"</title>
+	</head>
+
+	<body>
+		<h1>Expressions</h1>
+		Expressions are made of the following 5 characters: &psi;, (, ), +, and 0. A valid expression is defined as the following:
+		<ul>
+			<li>0 is a valid expression.</li>
+			<li>&psi;<sub>X</sub>(Y) is a valid expression, if X and Y are also valid expressions.</li>
+			<li>X<sub>0</sub>+X<sub>1</sub>+...+X<sub>n</sub> is a valid expression, if all X are also valid expressions.</li>
+		</ul>
+
+		The 0 in &psi;<sub>0</sub> can be omitted.
+
+		<h1>Terms</h1>
+		<ul>
+			<li>A "plus expression" is an expression of the form described in the third valid expression rule.</li>
+			<li>A "singular expression" is an expression of the form described in the second expression rule.</li>
+			<li>The "psi subscript" of a singular expression &psi;<sub>X</sub>(Y) is X.</li>
+			<li>A singular expression expression A is "inside" an expression &psi;<sub>C</sub>(B) if A = B, or there exists an n such that the X<sub>n</sub> of B = A.</li>
+		</ul>
+
+		<h1>Comparison</h1>
+		For valid expressions A, B, A = B if they are written the same.<br><br>
+		A and B are valid expressions.<br><br>
+
+		A = B implies A &gt; B is false.<br>
+		A &gt; B implies B &gt; A is false.<br>
+		If B = 0 is true and A = 0 is false, A &gt; B.<br>
+		If at least one of A or B are not standard, A &gt; B is false.<br><br>
+
+		To compare with a plus expression A with a singular expression B, B &gt; A if B &gt; X<sub>0</sub>. 
+		The same holds for a singular expression A and plus expression B.<br>
+		To compare A and B both being plus expressions: 
+		For all natural numbers n &lt; m such that X<sub>n</sub> of A = X<sub>n</sub> of B, A > B if X<sub>m</sub> of A > X<sub>m</sub> of B.<br><br>
+
+		A and B being singular expressions comparison:
+		<ol>
+			<li>If the psi subscript of A &gt; the psi subscript of B, A &gt; B.</li>
+			<li>
+				For any valid expressions C, D, &psi;<sub>C</sub>(A) &gt; &psi;<sub>C</sub>(B) &iff; 
+				&psi;<sub>C</sub>(&psi;<sub>D</sub>(A)) &gt; &psi;<sub>C</sub>(&psi;<sub>D</sub>(B)).
+			</li>
+			<li>If there exists a standard substring of A C, the psi subscript of B = the psi subscript of C, and C &gt; B or C = B, A &gt; B.</li>
+			<li>If checking if &psi;<sub>C</sub>(A) &gt; &psi;<sub>C</sub>(B), it is true if A &gt; B.</li>
+		</ol>
+
+		Note that rules can only be used to determine if A &gt; B if you cannot determine whether A &gt; B is true of false with the preceeding rules.
+
+		<h1>Standardness</h1>
+		0 is standard.<br>
+		A valid expression E is standard if there are no singular expressions A inside B inside C, such that W &gt; V, X &gt; Y, and Y &gt; Z, with W defined as the least
+		ordinal such that X + W = Y, V being defined as the least ordinal such that Y + V = Z, and X, Y, Z being defined as the values of the psi subscripts of A, B, C.
+		All valid substrings of E must be standard for E to be standard.
+		Additionally, for E being a plus expression, there musn't exist an n such that X<sub>n</sub> of E = 0 for E to be standard, and for all X<sub>n</sub> and
+		X<sub>n+1</sub> of E, X<sub>n</sub> > X<sub>n+1</sub> must be true.
+
+		<h1>Value</h1>
+		The value of 0 is 0.<br>
+		E is a standard expression. 
+		Let S be the set of the values of all X such that E &gt; X.
+		The value of E is the least ordinal n such that n is not in S.<br>
+		uh idk what else to put here
+
+		<h1>Notes, analysis, and other stuff</h1>
+		There are still some minor issues I have with the notation, like &psi;(&psi;<sub>&psi;(0)</sub>(&psi;<sub>&psi;(0)</sub>(0))+&psi;(0)) 
+		not being &Gamma;<sub>1</sub>, and instead being a much smaller ordinal (&phi;(&Gamma;<sub>0</sub>, 1), I think).
+		It doesn't impact the growth rate, and only makes some ordinals have an offset of 1 or 2 &psi;s from their "optimized" counterparts, but I still don't like it.<br><br>
+
+		Below &psi;(&psi;<sub>&psi;(0)</sub>(&psi;<sub>&psi;(0)+&psi;(0)</sub>(0))), it matches Buchholz closely, but then starts to grow much faster.
+		I used to think limit of EBOCF was &psi;(&psi;<sub>&psi;(0)</sub>(&psi;<sub>&psi;(0)+&psi;(0)</sub>(0)+&psi;<sub>&psi;(0)+&psi;(0)</sub>(0))), but I made several
+		analysis errors and what I thought was the limit of EBOCF is probably a much larger ordinal.<br><br>
+
+		&psi;<sub>&psi;(0)</sub>(0) does not actually have a value.
+		I haven't found a way to make it some large countable ordinal yet (mainly because I haven't looked much), but don't want to just make it &Omega; or something like that.
+		&psi;(&psi;<sub>&psi;<sub>&psi;(0)</sub>(0)</sub>(0)) also does not have a value, which probably makes the limit of this notation much smaller than it could be.
+
+		<br><br><br><br> <!-- discord link space -->
+
+		<button id="themeToggle" onclick="toggleTheme()">
+			Toggle theme
+		</button>
+		<a id="discord">discord</a>
+	</body>
+</html>
